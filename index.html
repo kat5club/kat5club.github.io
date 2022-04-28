@@ -57,6 +57,9 @@
             </div>
          </div>
       </div>
+
+     <div id="snackbar">İstek talebiniz bize iletilmiştir. İyi günler dileriz.</div>
+     
       <script src="https://unpkg.com/@supabase/supabase-js"></script>
       <script>
          const { createClient } = supabase
@@ -82,12 +85,20 @@
              if (error) {
                  alert('Sisteme şuanda erişilemiyor lütfen daha sonra tekrar deneyin ya da bizimle iletişime geçin.')
              } else {
-                 alert('İstek talebiniz bize iletilmiştir. İyi günler dileriz')
+                 //alert('İstek talebiniz bize iletilmiştir. İyi günler dileriz')
+               createToast()
              }
          
              formInputs.forEach(element => element.value = '')
          
          })
+        function createToast(){
+          var snackbar = document.getElementById("snackbar");
+          snackbar.className = "show";
+          setTimeout(function(){ 
+            snackbar.className = snackbar.className.replace("show", ""); 
+          }, 3000);
+        }
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>

@@ -9,7 +9,7 @@
 }
 
 body {
-  background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%);
+  background-image: url("./bg.jpg");
   font-size: 12px;
 }
 
@@ -19,13 +19,6 @@ input {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   letter-spacing: 1.4px;
-}
-#myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
 }
 
 .background {

@@ -1,99 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Form Example</title>
-    <link href="./style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <div class="background">
-  <div class="container">
-    <div class="screen">
-      <div class="screen-body">
-        <div class="screen-body-item left">
-          <div class="app-title">
-            Kat5Club
-          </div>
-          <div class="app-contact">Ahmet Necdet Yıldız : 0543 356 2744</div>
-          <div class="app-contact">Cemal Karataş : 0544 720 8486</div>
-        </div>
-        <div class="screen-body-item">
-          <form 
-            class="app-form"
-            method="POST"
-            id="contact-form"
-            >
-            
-            <div class="app-form-group">
-              <input 
-                class="app-form-control" 
-                placeholder="İLETİŞİM NUMARASI" 
-                name="phoneNumber"
-                id="phoneNumber"
-              >
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Kat5Club</title>
+      <link href="./style.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <div class="background">
+         <div class="container">
+            <div class="screen">
+               <div class="screen-body">
+                  <div class="screen-body-item left">
+                     <div class="app-title">
+                        Kat5Club
+                     </div>
+                     <div class="app-contact">Ahmet Necdet Yıldız : 0543 356 2744</div>
+                     <div class="app-contact">Cemal Karataş : 0544 720 8486</div>
+                  </div>
+                  <div class="screen-body-item">
+                     <form 
+                        class="app-form"
+                        method="POST"
+                        id="contact-form"
+                        >
+                        <div class="app-form-group">
+                           <input 
+                              class="app-form-control" 
+                              placeholder="İLETİŞİM NUMARASI" 
+                              name="phoneNumber"
+                              id="phoneNumber"
+                              >
+                        </div>
+                        <div class="app-form-group message">
+                           <input 
+                              class="app-form-control" 
+                              placeholder="İstek Şarkı" 
+                              name="message"
+                              id="message"
+                              required
+                              >
+                        </div>
+                        <div class="app-form-group buttons">
+                           <button class="app-form-button" type="submit">Gönder</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
             </div>
-            <div class="app-form-group message">
-              <input 
-                class="app-form-control" 
-                placeholder="İstek Şarkı" 
-                name="message"
-                id="message"
-                required
-              >
+            <div class="credits">
+               Adres:
+               <a class="credits-link">
+               Haydar Çavuş, Saatçiler Cd No:19, 10200 Bandırma/Balıkesir
+               </a>
             </div>
-            <div class="app-form-group buttons">
-              <button class="app-form-button" type="submit">Gönder</button>
-            </div>
-          </form>
-        </div>
+         </div>
       </div>
-    </div>
-    <div class="credits">
-      Adres:
-      <a class="credits-link">
-        Haydar Çavuş, Saatçiler Cd No:19, 10200 Bandırma/Balıkesir
-      </a>
-    </div>
-  </div>
-</div>
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
-  <script>
-      const { createClient } = supabase
-      supabase = createClient("https://hqgzlzwvvrzzvhljsqbu.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxZ3psend2dnJ6enZobGpzcWJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTExNjY1MjUsImV4cCI6MTk2Njc0MjUyNX0.TMknKE4dlnjE8QH9NeC55rurPvzJCrchMIDftty1Kzw")
-      
-      const form = document.querySelector('#contact-form')
-      form.addEventListener('submit', async (event) => {
-          event.preventDefault()
-
-          const formInputs = form.querySelectorAll('input')
-
-          let submision = {}
-
-          formInputs.forEach(element => {
-            const { value, name } = element
-            if (value) {
-                submision[name] = value
-            }
-          })
-
-          const { error } = await supabase.from('istekler').insert([submision], { returning: 'minimal'})
-
-          if (error) {
-              alert('Sisteme şuanda erişilemiyor lütfen daha sonra tekrar deneyin ya da bizimle iletişime geçin.')
-          } else {
-              alert('İstek talebiniz bize iletilmiştir. İyi günler dileriz')
-          }
-
-          formInputs.forEach(element => element.value = '')
-
-      })
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-            <script>
-              $('#phoneNumber').inputmask("0 (999) 999 99 99");
-            </script>
-  </body>
+      <script src="https://unpkg.com/@supabase/supabase-js"></script>
+      <script>
+         const { createClient } = supabase
+         supabase = createClient("https://hqgzlzwvvrzzvhljsqbu.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxZ3psend2dnJ6enZobGpzcWJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTExNjY1MjUsImV4cCI6MTk2Njc0MjUyNX0.TMknKE4dlnjE8QH9NeC55rurPvzJCrchMIDftty1Kzw")
+         
+         const form = document.querySelector('#contact-form')
+         form.addEventListener('submit', async (event) => {
+             event.preventDefault()
+         
+             const formInputs = form.querySelectorAll('input')
+         
+             let submision = {}
+         
+             formInputs.forEach(element => {
+               const { value, name } = element
+               if (value) {
+                   submision[name] = value
+               }
+             })
+         
+             const { error } = await supabase.from('istekler').insert([submision], { returning: 'minimal'})
+         
+             if (error) {
+                 alert('Sisteme şuanda erişilemiyor lütfen daha sonra tekrar deneyin ya da bizimle iletişime geçin.')
+             } else {
+                 alert('İstek talebiniz bize iletilmiştir. İyi günler dileriz')
+             }
+         
+             formInputs.forEach(element => element.value = '')
+         
+         })
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+      <script>
+         $('#phoneNumber').inputmask("0 (999) 999 99 99");
+      </script>
+   </body>
 </html>

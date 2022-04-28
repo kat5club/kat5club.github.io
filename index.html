@@ -1,1 +1,68 @@
-<h1>Merhaba Cemal</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Kat5Club</title>
+  <link href="./style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <video autoplay loop id="myVideo">
+  <source src="./video.mp4" type="video/mp4">
+</video>
+  <div class="background">
+  <div class="container">
+    <div class="screen">
+      <div class="screen-body">
+        <div class="screen-body-item left">
+          <div class="app-title">
+            Kat5Club
+          </div>
+          <div class="app-contact">Ahmet Necdet Yıldız : 0543 356 2744</div>
+          <div class="app-contact">Cemal Karataş : 0544 720 8486</div>
+        </div>
+        <div class="screen-body-item">
+          <form 
+            class="app-form"
+            action="https://formspree.io/f/xlezolkp"
+            method="POST"
+          >
+            <div class="app-form-group">
+              <input 
+                class="app-form-control" 
+                placeholder="İLETİŞİM NUMARASI" 
+                name="number"
+                id="phoneNumber"
+              >
+            </div>
+            <div class="app-form-group message">
+              <input 
+                class="app-form-control" 
+                placeholder="İstek Şarkı" 
+                name="message"
+              >
+            </div>
+            <div class="app-form-group buttons">
+              <button class="app-form-button" type="submit">Gönder</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="credits">
+      Adres:
+      <a class="credits-link">
+        Haydar Çavuş, Saatçiler Cd No:19, 10200 Bandırma/Balıkesir
+      </a>
+    </div>
+  </div>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

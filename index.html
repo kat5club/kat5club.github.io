@@ -57,48 +57,21 @@
             </div>
          </div>
       </div>
-
-     <div id="snackbar">İstek talebiniz bize iletilmiştir. İyi günler dileriz.</div>
-     
+      <div id="snackbar">İstek talebiniz bize iletilmiştir. İyi günler dileriz.</div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+         <!-- Modal content -->
+         <div class="modal-content">
+            <span class="close">&times;</span>
+            <video controls autoplay id="video">
+               <source src="video.mp4" type="video/mp4">
+               Your browser does not support the video tag.
+            </video>
+         </div>
+      </div>
       <script src="https://unpkg.com/@supabase/supabase-js"></script>
       <script>
-         const { createClient } = supabase
-         supabase = createClient("https://hqgzlzwvvrzzvhljsqbu.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxZ3psend2dnJ6enZobGpzcWJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTExNjY1MjUsImV4cCI6MTk2Njc0MjUyNX0.TMknKE4dlnjE8QH9NeC55rurPvzJCrchMIDftty1Kzw")
-         
-         const form = document.querySelector('#contact-form')
-         form.addEventListener('submit', async (event) => {
-             event.preventDefault()
-         
-             const formInputs = form.querySelectorAll('input')
-         
-             let submision = {}
-         
-             formInputs.forEach(element => {
-               const { value, name } = element
-               if (value) {
-                   submision[name] = value
-               }
-             })
-         
-             const { error } = await supabase.from('istekler').insert([submision], { returning: 'minimal'})
-         
-             if (error) {
-                 alert('Sisteme şuanda erişilemiyor lütfen daha sonra tekrar deneyin ya da bizimle iletişime geçin.')
-             } else {
-                 //alert('İstek talebiniz bize iletilmiştir. İyi günler dileriz')
-               createToast()
-             }
-         
-             formInputs.forEach(element => element.value = '')
-         
-         })
-        function createToast(){
-          var snackbar = document.getElementById("snackbar");
-          snackbar.className = "show";
-          setTimeout(function(){ 
-            snackbar.className = snackbar.className.replace("show", ""); 
-          }, 3000);
-        }
+         const{createClient:createClient}=supabase;supabase=createClient("https://hqgzlzwvvrzzvhljsqbu.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxZ3psend2dnJ6enZobGpzcWJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTExNjY1MjUsImV4cCI6MTk2Njc0MjUyNX0.TMknKE4dlnjE8QH9NeC55rurPvzJCrchMIDftty1Kzw");const form=document.querySelector("#contact-form");function createToast(){var e=document.getElementById("snackbar");e.className="show",setTimeout(function(){e.className=e.className.replace("show","")},3e3)}form.addEventListener("submit",async e=>{e.preventDefault();const t=form.querySelectorAll("input");let a={};t.forEach(e=>{const{value:t,name:n}=e;t&&(a[n]=t)});const{error:n}=await supabase.from("istekler").insert([a],{returning:"minimal"});n?alert("Sisteme şuanda erişilemiyor lütfen daha sonra tekrar deneyin ya da bizimle iletişime geçin."):createToast(),t.forEach(e=>e.value="")});var modal=document.getElementById("myModal"),video=document.getElementById("video"),span=document.getElementsByClassName("close")[0];window.onload=function(){modal.style.display="block",video.play()},span.onclick=function(){modal.style.display="none"},window.onclick=function(e){e.target==modal&&(modal.style.display="none")};
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
